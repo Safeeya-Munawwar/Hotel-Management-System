@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
+import Contact from "./pages/Contact";
 import HotelDetail from "./pages/HotelDetail";
 import Booking from "./pages/Booking";
 import Menu from "./pages/Menu";
@@ -14,6 +15,7 @@ function App() {
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/hotel-detail" element={<HotelDetail />} />
           <Route path="/booking" element={<Booking />} />
           <Route path="/menu" element={<Menu />} />
