@@ -1,0 +1,10 @@
+# Handle all text files automatically
+* text=auto
+
+# Explicitly declare certain file types as text
+*.js text
+*.jsx text
+*.json text
+*.css text
+*.html text
+*.md text
