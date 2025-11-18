@@ -1,18 +1,25 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import HotelDetail from "./pages/HotelDetail";
+import Booking from "./pages/Booking";
+import Menu from "./pages/Menu";
 
 function App() {
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    axios.get("http://localhost:5000/")
-      .then(res => setMessage(res.data.message))
-      .catch(err => console.error(err));
-  }, []);
-
   return (
-    <div className="text-center mt-10">
-      <h1 className="text-4xl font-bold text-blue-600">{message}</h1>
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/hotel-detail" element={<HotelDetail />} />
+          <Route path="/booking" element={<Booking />} />
+          <Route path="/menu" element={<Menu />} />
+        </Routes>
+      </main>
+      <Footer />
     </div>
   );
 }
