@@ -8,8 +8,6 @@ import DiningPage from "./pages/Dining";
 import HotelDetail from "./pages/HotelDetail";
 import Booking from "./pages/Booking";
 import Menu from "./pages/Menu";
-import axios from "axios";
-
 
 function App() {
   return (

@@ -1,64 +1,26 @@
 import React from "react";
+import Booking from "../components/Booking"; // adjust path if needed
 
 const ContactPage = () => {
   return (
     <div className="font-poppins bg-gray-50">
+
       {/* ---------------------- HERO HEADER ---------------------- */}
       <div
-        className="w-full h-[380px] md:h-[500px] bg-cover bg-center flex flex-col items-center justify-center text-white relative"
+        className="w-full h-[380px] md:h-[500px] bg-cover bg-center relative flex flex-col items-center justify-center text-white"
         style={{ backgroundImage: "url('/images/header.PNG')" }}
       >
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60"></div>
 
-        <h1 className="relative text-4xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg border-b-4 border-yellow-500 pb-2">
+        {/* Heading */}
+        <h1 className="relative text-4xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg border-b-4 border-yellow-500 pb-2 z-10">
           Contact Us
         </h1>
 
-        {/* ---- BOOKING FORM BELOW HEADER ---- */}
-        <div className="absolute -bottom-16 w-full px-5">
-          <div className="bg-white text-black shadow-lg rounded-xl p-5 md:p-6 max-w-[1200px] mx-auto flex flex-wrap gap-4 items-center justify-between">
-            <div className="flex flex-col flex-1 min-w-[130px]">
-              <label className="text-sm font-semibold text-yellow-500">Arrival</label>
-              <input
-                type="date"
-                className="mt-1 p-2 rounded border border-gray-300 focus:ring-2 focus:ring-yellow-500 focus:outline-none"
-                defaultValue="2025-11-18"
-              />
-            </div>
-
-            <div className="flex flex-col flex-1 min-w-[130px]">
-              <label className="text-sm font-semibold text-yellow-500">Departure</label>
-              <input
-                type="date"
-                className="mt-1 p-2 rounded border border-gray-300 focus:ring-2 focus:ring-yellow-500 focus:outline-none"
-                defaultValue="2025-11-19"
-              />
-            </div>
-
-            <div className="flex flex-col flex-1 min-w-[130px]">
-              <label className="text-sm font-semibold text-yellow-500">Promo Code</label>
-              <input
-                type="text"
-                placeholder="Enter promo code"
-                className="mt-1 p-2 rounded border border-gray-300 focus:ring-2 focus:ring-yellow-500 focus:outline-none"
-              />
-            </div>
-
-            <div className="flex flex-col flex-1 min-w-[130px]">
-              <label className="text-sm font-semibold text-yellow-500">Nationality</label>
-              <select className="mt-1 p-2 rounded border border-gray-300 focus:ring-2 focus:ring-yellow-500 focus:outline-none">
-                <option>Sri Lankan</option>
-                <option>Non-Sri Lankan</option>
-              </select>
-            </div>
-
-            <div className="flex-1 min-w-[130px]">
-              <button className="w-full bg-yellow-500 text-black font-semibold py-2 rounded hover:bg-yellow-600 transition">
-                Book Now
-              </button>
-            </div>
-          </div>
+        {/* Booking Form */}
+        <div className="absolute -bottom-16 w-full px-5 z-10">
+          <Booking />
         </div>
       </div>
 
@@ -74,6 +36,7 @@ const ContactPage = () => {
 
       {/* ---------------------- DIRECTIONS + MAP ---------------------- */}
       <div className="flex flex-wrap justify-center gap-8 px-6 py-10">
+
         {/* Directions Card */}
         <div className="w-full md:w-[450px] p-6 rounded-xl shadow-lg border border-yellow-500 hover:shadow-2xl transition">
           <h2 className="text-xl font-semibold mb-4 text-yellow-600 border-b-2 border-yellow-500 pb-1">
@@ -110,10 +73,12 @@ const ContactPage = () => {
             allowFullScreen
           ></iframe>
         </div>
+
       </div>
 
       {/* ---------------------- IMAGE + INQUIRY FORM ---------------------- */}
       <div className="flex flex-wrap justify-center gap-10 px-6 py-16">
+
         {/* Image */}
         <div className="w-full md:w-[450px] rounded-xl overflow-hidden shadow-lg border-2 border-yellow-500">
           <img
@@ -168,7 +133,9 @@ const ContactPage = () => {
             </button>
           </form>
         </div>
+
       </div>
+
     </div>
   );
 };
