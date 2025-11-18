@@ -1,38 +1,41 @@
-// C:\Users\Administrator\Projects\hotel-system\frontend\src\components\Navbar.jsx
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { HiMenu, HiX } from "react-icons/hi";
-import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import { Link, useLocation } from "react-router-dom";
+import { Clock, MapPin, Phone, Menu } from "lucide-react";
+import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import WeatherWidget from "./WeatherWidget";
 
-const Navbar = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [sideOpen, setSideOpen] = useState(false); // RIGHT SIDEBAR MENU
+export default function Navbar() {
+  const location = useLocation();
   const [time, setTime] = useState("");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Update live time
+  // Live Clock
   useEffect(() => {
-    const interval = setInterval(() => {
+    const updateClock = () => {
       const now = new Date();
-      const hours = now.getHours().toString().padStart(2, "0");
-      const minutes = now.getMinutes().toString().padStart(2, "0");
-      const ampm = now.getHours() >= 12 ? "PM" : "AM";
-      setTime(`${hours}:${minutes} ${ampm}`);
-    }, 1000);
+      setTime(
+        now.toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        })
+      );
+    };
+    updateClock();
+    const interval = setInterval(updateClock, 60000);
     return () => clearInterval(interval);
   }, []);
 
-  // Detect scroll (hide topbar + dark navbar)
+  // Scroll listener
   useEffect(() => {
-    const onScroll = () => {
-      if (window.scrollY > 30) setScrolled(true);
-      else setScrolled(false);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 120);
     };
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const menuLinks = [
+  const navLinks = [
     { name: "HOME", path: "/" },
     { name: "ROOMS & SUITES", path: "/rooms" },
     { name: "OFFERS", path: "/offers" },
@@ -43,158 +46,160 @@ const Navbar = () => {
     { name: "CONTACT US", path: "/contact" },
   ];
 
-  const sideLinks = [
-    "Discover Us",
-    "Our Hotels",
-    "Spa & Wellness",
-    "Meetings & Events",
-    "Guest Reviews",
-    "Gallery",
-    "FAQ",
-  ];
-
   return (
-    <div className="fixed w-full z-50 top-0">
-      
-      {/* Top Info Bar */}
-      <div
-        className={`bg-black bg-opacity-70 text-white px-4 py-2 text-sm flex justify-between items-center 
-        transition-all duration-500 ${
-          scrolled ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"
+    <>
+      {/* ================= HEADER ================= */}
+      <header
+        className={`w-full fixed top-0 z-50 font-poppins transition-all duration-500 ${
+          scrolled ? "bg-black shadow-md" : "bg-transparent/5"
         }`}
       >
-        <div className="flex items-center space-x-4">
-          <div>⏱ {time}</div>
-          <div>☁️ 26 ˚C</div>
-          <div>📍 322, Udagama, Ampitiya Rd, Kandy 20000</div>
-          <div>📞 +94 81 224 4000</div>
-        </div>
-        <div className="flex space-x-3">
-          <FaFacebookF />
-          <FaInstagram />
-        </div>
-      </div>
-
-      {/* Main Navbar */}
-      <nav
-        className={`px-4 py-4 fixed w-full z-50 transition-all duration-500 ${
-          scrolled ? "bg-black top-0 shadow-md" : "bg-transparent top-10"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          
-          {/* Logo */}
-          <Link to="/">
-            <img src="/images/logo.PNG" alt="Logo" className="h-12 w-auto" />
-          </Link>
-
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-6 font-medium text-white">
-            {menuLinks.map((link, idx) => (
-              <Link
-                key={idx}
-                to={link.path}
-                className="hover:text-gray-300 transition border-b-2 border-transparent hover:border-white pb-1"
-              >
-                {link.name}
-              </Link>
-            ))}
-
-            {/* RIGHT SIDE HAMBURGER */}
-            <button onClick={() => setSideOpen(true)}>
-              <HiMenu size={28} />
-            </button>
-          </div>
-
-          {/* Mobile Hamburger (Main menu) */}
-          <div className="md:hidden flex items-center space-x-4">
-            <button onClick={() => setSideOpen(true)}>
-              <HiMenu size={28} />
-            </button>
-
-            <button onClick={() => setMobileOpen(!mobileOpen)}>
-              {mobileOpen ? <HiX size={28} /> : <HiMenu size={28} />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {mobileOpen && (
-          <div className="md:hidden bg-black bg-opacity-90 text-white px-4 pt-4 pb-4 space-y-2 mt-2">
-            {menuLinks.map((link, idx) => (
-              <Link
-                key={idx}
-                to={link.path}
-                onClick={() => setMobileOpen(false)}
-                className="block hover:text-gray-300"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-        )}
-      </nav>
-
-{/* RIGHT SIDEBAR MENU */}
-<div
-  className={`fixed top-0 right-0 h-full w-72 bg-white text-black 
-  shadow-xl transform transition-transform duration-500 
-  overflow-y-auto z-[200]
-  ${sideOpen ? "translate-x-0" : "translate-x-full"}`}
->
-  {/* Close Button */}
-  <button
-    onClick={() => setSideOpen(false)}
-    className="absolute top-5 right-5 text-3xl text-gray-600 hover:text-black"
-  >
-    <HiX size={30} />
-  </button>
-
-  <div className="px-8 pt-16 pb-10">
-    
-    {/* Logo */}
-    <div className="flex justify-center mb-8">
-      <img
-        src="/images/logo.PNG"
-        alt="Golden Crown"
-        className="h-14 object-contain"
-      />
-    </div>
-
-    {/* Sidebar Links */}
-    <div className="space-y-4 text-base tracking-wide">
-      {sideLinks.map((item, idx) => (
+        {/* ========== 2-COLUMN WRAPPER ========== */}
         <div
-          key={idx}
-          className="hover:text-gray-500 cursor-pointer transition"
+          className={`flex items-center justify-between px-20 transition-all duration-500 ${
+            scrolled ? "py-2" : "py-2"
+          }`}
         >
-          {item.toUpperCase()}
+          {/* LEFT — LOGO */}
+          <div
+            className={`transition-all duration-500 ${
+              scrolled ? "w-28 py-2" : "w-36 py-4"
+            }`}
+          >
+            <img src="/logo.png" alt="Logo" className="w-full" />
+          </div>
+
+          {/* RIGHT SIDE */}
+          <div className="flex flex-col items-end">
+
+            {/* ---------- TOP INFO BAR ---------- */}
+            <div
+              className={`flex items-center gap-6 text-white text-[12px] tracking-wide transition-all duration-500 ${
+                scrolled
+                  ? "opacity-0 h-0 overflow-hidden"
+                  : "opacity-100 py-2"
+              }`}
+            >
+              <span className="flex items-center gap-2">
+                <Clock size={14} /> {time}
+              </span>
+
+              <span className="flex items-center gap-2">
+                <WeatherWidget city="Kandy,LK" />
+              </span>
+
+              <span className="flex items-center gap-2 whitespace-nowrap">
+                <MapPin size={14} /> 322, Udagama, Ampitiya Rd, Kandy 20000
+              </span>
+
+              <span className="flex items-center gap-2">
+                <Phone size={14} /> +94 81 224 4000
+              </span>
+
+              <div className="w-7 h-7 border border-white rounded-full flex items-center justify-center">
+                <FaFacebookF size={13} />
+              </div>
+
+              <div className="w-7 h-7 border border-white rounded-full flex items-center justify-center">
+                <FaInstagram size={13} />
+              </div>
+            </div>
+
+            {/* ---------- NAV ROW ---------- */}
+            <div className="flex items-center gap-8">
+
+           <nav className={`flex text-sm tracking-[0.12em] text-white transition-all duration-500 ${
+  scrolled ? "gap-4" : "gap-8"
+}`}>
+  {navLinks.map((link) => {
+    const isActive = location.pathname === link.path;
+    return (
+      <Link
+        key={link.name}
+        to={link.path}
+        className="relative hover:text-gold transition"
+      >
+        {link.name}
+        {isActive && (
+          <span className="absolute bottom-[-4px] left-1/2 -translate-x-1/2 w-6 h-[2px] bg-white"></span>
+        )}
+      </Link>
+    );
+  })}
+</nav>
+
+
+            <Link
+  to="/booking"
+  className={`bg-[#C7A348] text-black px-5 py-2 text-sm tracking-wider rounded-sm transition-all duration-500 ${
+    scrolled
+      ? "opacity-100 scale-100"
+      : "opacity-0 scale-75 pointer-events-none absolute -right-20"
+  }`}
+>
+  RESERVE NOW
+</Link>
+
+
+              {/* HAMBURGER MENU */}
+              <Menu
+                size={30}
+                className="text-white cursor-pointer"
+                onClick={() => setSidebarOpen(true)}
+              />
+            </div>
+          </div>
         </div>
-      ))}
-    </div>
+      </header>
 
-    {/* Follow Us */}
-    <div className="mt-10 pb-6">
-      <h3 className="text-lg font-semibold mb-3">Follow <span className="font-light">us</span></h3>
-      <div className="flex space-x-4 text-xl text-yellow-600">
-        <FaFacebookF />
-        <FaInstagram />
+      {/* ================= RIGHT SIDEBAR ================= */}
+      <div
+        className={`fixed top-0 right-0 h-full w-[350px] bg-white text-black z-[999] shadow-xl transition-transform duration-300 ${
+          sidebarOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex justify-end px-6 py-6">
+          <button onClick={() => setSidebarOpen(false)}>
+            <span className="text-3xl font-light">✕</span>
+          </button>
+        </div>
+
+        <div className="flex justify-center mb-10">
+          <img src="/logo.png" alt="Logo" className="w-40" />
+        </div>
+
+        <div className="flex flex-col gap-6 px-10 text-[15px]">
+          <a className="hover:text-gold transition">DISCOVER US</a>
+          <a className="hover:text-gold transition">OUR HOTELS</a>
+          <a className="hover:text-gold transition">SPA & WELLNESS</a>
+          <a className="hover:text-gold transition">MEETINGS & EVENTS</a>
+          <a className="hover:text-gold transition">GUEST REVIEWS</a>
+          <a className="hover:text-gold transition">GALLERY</a>
+          <a className="hover:text-gold transition">FAQ</a>
+        </div>
+
+        <div className="px-10 mt-12">
+          <p className="font-semibold mb-4">Follow us</p>
+          <div className="flex gap-5">
+            <div className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-400">
+              <FaFacebookF size={15} />
+            </div>
+            <div className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-400">
+              <FaInstagram size={15} />
+            </div>
+            <div className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-400">
+              <FaTwitter size={15} />
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
 
-  </div>
-</div>
-
-{/* DARK OVERLAY */}
-{sideOpen && (
-  <div
-    onClick={() => setSideOpen(false)}
-    className="fixed inset-0 bg-black/50 z-[150]"
-  />
-)}
-
-    </div>
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[998]"
+          onClick={() => setSidebarOpen(false)}
+        ></div>
+      )}
+    </>
   );
-};
-
-export default Navbar;
+}
