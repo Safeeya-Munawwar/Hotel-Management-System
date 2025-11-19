@@ -169,14 +169,15 @@ export default function Navbar() {
         </div>
 
         <div className="flex flex-col gap-6 px-10 text-[15px]">
-          <a className="hover:text-gold transition">DISCOVER US</a>
-          <a className="hover:text-gold transition">OUR HOTELS</a>
-          <a className="hover:text-gold transition">SPA & WELLNESS</a>
-          <a className="hover:text-gold transition">MEETINGS & EVENTS</a>
-          <a className="hover:text-gold transition">GUEST REVIEWS</a>
-          <a className="hover:text-gold transition">GALLERY</a>
-          <a className="hover:text-gold transition">FAQ</a>
-        </div>
+  <a href="/discover-us" className="hover:text-gold transition">DISCOVER US</a>
+  <a href="/our-hotels" className="hover:text-gold transition">OUR HOTELS</a>
+  <a href="/spa-wellness" className="hover:text-gold transition">SPA & WELLNESS</a>
+  <a href="/meetings-events" className="hover:text-gold transition">MEETINGS & EVENTS</a>
+  <a href="/guest-reviews" className="hover:text-gold transition">GUEST REVIEWS</a>
+  <a href="/gallery" className="hover:text-gold transition">GALLERY</a>
+  <a href="/faq" className="hover:text-gold transition">FAQ</a>
+</div>
+
 
         <div className="px-10 mt-12">
           <p className="font-semibold mb-4">Follow us</p>

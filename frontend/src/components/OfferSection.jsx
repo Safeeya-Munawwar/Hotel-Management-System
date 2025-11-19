@@ -20,7 +20,7 @@ export default function OfferSection() {
             which is now being the Talk of the Town...
           </p>
 
-          <a href="#" className="underline mb-10 text-gray-600">
+          <a href="/offer" className="underline mb-10 text-gray-600">
             Read More
           </a>
 
