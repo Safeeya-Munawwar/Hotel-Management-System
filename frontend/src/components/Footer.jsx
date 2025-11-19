@@ -1,148 +1,115 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube, FaStar } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaTwitter, FaTiktok } from "react-icons/fa";
 
-const Footer = () => {
-  const footerSections = [
-    {
-      title: "Support",
-      links: [
-        "Manage your trips",
-        "Contact Customer Service",
-        "Safety Resource Center",
-      ],
-    },
-    {
-      title: "Discover",
-      links: [
-        "Loyalty program",
-        "Seasonal and holiday deals",
-        "Travel articles",
-        "Business booking",
-        "Awards & Recognition",
-        "Car rental",
-        "Flight finder",
-        "Restaurant reservations",
-      ],
-    },
-    {
-      title: "Terms & Policies",
-      links: [
-        "Privacy Notice",
-        "Terms of Service",
-        "Accessibility Statement",
-        "Partner dispute",
-        "Modern Slavery Statement",
-        "Human Rights Statement",
-      ],
-    },
-    {
-      title: "Partners",
-      links: [
-        "Extranet login",
-        "Partner help",
-        "List your property",
-        "Become an affiliate",
-      ],
-    },
-    {
-      title: "About",
-      links: [
-        "About Us",
-        "How We Work",
-        "Sustainability",
-        "Press center",
-        "Careers",
-        "Investor relations",
-        "Corporate contact",
-      ],
-    },
-  ];
-
-  const socialLinks = [
-    { icon: <FaFacebookF />, url: "https://facebook.com" },
-    { icon: <FaInstagram />, url: "https://instagram.com" },
-    { icon: <FaTwitter />, url: "https://twitter.com" },
-    { icon: <FaYoutube />, url: "/" },
-  ];
-
+export default function Footer() {
   return (
-    <footer className="bg-gradient-to-t from-gray-900 to-gray-800 text-gray-300 pt-16">
-      {/* Main Sections */}
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8">
-        {footerSections.map((section, idx) => (
-          <div
-            key={idx}
-            className="space-y-3 group transform transition duration-300 hover:-translate-y-1"
-          >
-            <h3 className="text-white font-semibold text-lg border-l-4 border-yellow-500 pl-2 group-hover:pl-4 transition-all">
-              {section.title}
-            </h3>
-            <ul className="space-y-1 text-sm text-gray-400">
-              {section.links.map((link, i) => (
-                <li key={i}>
-                  <Link
-                    to="/"
-                    className="hover:text-white hover:underline hover:translate-x-1 transition-all duration-300"
-                  >
-                    {link}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
+    <footer className="bg-[#1a1a1a] text-gray-300 pt-12 pb-6 font-poppins">
+      <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
 
-      {/* Newsletter + Social + Ratings */}
-      <div className="mt-12 border-t border-gray-700 py-10 max-w-7xl mx-auto px-4 flex flex-col md:flex-row md:justify-between md:items-center gap-6">
-        {/* Newsletter */}
-        <div className="flex-1 bg-gray-900/50 p-4 rounded-lg shadow-md">
-          <h4 className="text-white font-semibold mb-2">Subscribe to our newsletter</h4>
-          <div className="flex flex-col sm:flex-row gap-2">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="p-2 rounded-l border border-gray-600 flex-1 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-            />
-            <button className="bg-yellow-500 text-black font-semibold py-2 px-4 rounded-r hover:bg-yellow-600 transition duration-300 shadow hover:shadow-lg">
-              Subscribe
-            </button>
+        {/* Logo & Awards */}
+        <div className="flex flex-col items-center space-y-4">
+          <img src="/logo.PNG" alt="The Golden Crown Logo" className="w-32" />
+          <div className="flex flex-wrap justify-center gap-4">
+            <img src="/images/award1.png" alt="Award 1" className="w-12 h-12 object-contain" />
+            <img src="/images/award2.png" alt="Award 2" className="w-12 h-12 object-contain" />
+            <img src="/images/award3.png" alt="Award 3" className="w-12 h-12 object-contain" />
           </div>
         </div>
 
-        {/* Social Icons */}
-        <div className="flex items-center gap-4 justify-center md:justify-start">
-          {socialLinks.map((social, idx) => (
-            <a
-              key={idx}
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors transform hover:scale-110 shadow-sm hover:shadow-md p-2 rounded-full bg-gray-800/40"
-            >
-              {social.icon}
+        {/* Navigation */}
+        <div className="flex flex-col items-center md:items-start">
+          <h4 className="text-white font-semibold mb-4">The Golden Crown, Kandy</h4>
+          <ul className="space-y-2 text-gray-400 text-sm text-center md:text-left">
+            <li className="hover:text-white cursor-pointer">Rooms & Suites</li>
+            <li className="hover:text-white cursor-pointer">Offers</li>
+            <li className="hover:text-white cursor-pointer">Discover Us</li>
+            <li className="hover:text-white cursor-pointer">Our Hotels</li>
+            <li className="hover:text-white cursor-pointer">Terms & Conditions</li>
+            <li className="hover:text-white cursor-pointer">Privacy Policy</li>
+            <li className="hover:text-white cursor-pointer">Sitemap</li>
+          </ul>
+        </div>
+
+    {/* Social Links */}
+<div className="flex flex-col items-center md:items-start space-y-3">
+  <h4 className="text-white font-semibold mb-4">Follow Us</h4>
+
+  <a
+    href="https://facebook.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center space-x-3 hover:text-white"
+  >
+    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-700 hover:bg-blue-600 transition-colors">
+      <FaFacebookF className="w-5 h-5 text-white" />
+    </div>
+    <span className="text-sm">Facebook</span>
+  </a>
+
+  <a
+    href="https://instagram.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center space-x-3 hover:text-white"
+  >
+    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-700 hover:bg-pink-500 transition-colors">
+      <FaInstagram className="w-5 h-5 text-white" />
+    </div>
+    <span className="text-sm">Instagram</span>
+  </a>
+
+  <a
+    href="https://twitter.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center space-x-3 hover:text-white"
+  >
+    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-700 hover:bg-blue-400 transition-colors">
+      <FaTwitter className="w-5 h-5 text-white" />
+    </div>
+    <span className="text-sm">Twitter</span>
+  </a>
+
+  <a
+    href="https://tiktok.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center space-x-3 hover:text-white"
+  >
+    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-700 hover:bg-black transition-colors">
+      <FaTiktok className="w-5 h-5 text-white" />
+    </div>
+    <span className="text-sm">TikTok</span>
+  </a>
+</div>
+
+
+        {/* Contact Info */}
+        <div className="flex flex-col items-center md:items-start">
+          <h4 className="text-white font-semibold mb-4">Contact Us</h4>
+          <p className="text-sm text-gray-400 text-center md:text-left">
+            322, Udagama, Ampitiya,<br />
+            Kandy, Sri Lanka.<br />
+            <span className="block mt-2">+94 81 22 44 000</span>
+          </p>
+
+          <h4 className="text-white font-semibold mt-6 mb-2">Reservations Team</h4>
+          <p className="text-sm text-gray-400 text-center md:text-left">
+            +94 117 743 900<br />
+            <a href="mailto:reservations@thegoldenhospitality.com" className="hover:underline">
+              reservations@thegoldenhospitality.com
             </a>
-          ))}
-        </div>
-
-        {/* Badges / Ratings */}
-        <div className="flex items-center gap-2 justify-center md:justify-end bg-gray-900/50 p-2 rounded-lg shadow-md">
-          {[...Array(5)].map((_, i) => (
-            <FaStar key={i} className="text-yellow-500 animate-pulse" />
-          ))}
-          <span className="text-gray-400 ml-2 text-sm">5-star Luxury Hotel</span>
+          </p>
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-gray-800 py-6 text-center text-sm text-gray-500">
-        <p>
-          The Golden Crown, Kandy | &copy; {new Date().getFullYear()}. All rights reserved.
-        </p>
+      <hr className="border-gray-700 my-6" />
+
+      {/* Footer Bottom */}
+      <div className="max-w-[1400px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs space-y-2 md:space-y-0">
+        <p>© 2025 The Golden Crown. All rights reserved.</p>
+        <p>Website Design, Development & Hosting by NetIT Technology</p>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

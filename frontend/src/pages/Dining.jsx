@@ -1,137 +1,243 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Booking from "../components/Booking"; // adjust the path if needed
+import { Link } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
+export default function DiningPage() {
+  const [showText, setShowText] = useState(false);
 
-const restaurants = [
-  {
-    name: "The Royal Dine",
-    description: "Serving authentic Asian and Western cuisine with a modern twist.",
-    images: ["/images/dining1.PNG", "/images/dining1-2.PNG", "/images/dining1-3.PNG"],
-  },
-  {
-    name: "Sunset Lounge",
-    description: "Relax and enjoy cocktails with a breathtaking view of Kandy hills.",
-    images: ["/images/dining2.PNG", "/images/dining2-2.PNG", "/images/dining2-3.PNG"],
-  },
-  {
-    name: "Cafe Delight",
-    description: "Casual dining, pastries, and fresh coffee for your leisure moments.",
-    images: ["/images/dining3.PNG", "/images/dining3-2.PNG", "/images/dining3-3.PNG"],
-  },
-];
+  useEffect(() => {
+    const timer = setTimeout(() => setShowText(true), 500);
+    return () => clearTimeout(timer);
+  }, []);
 
-const awards = [
-  "2020 KAYAK Travel Awards - The Golden Crown Hotel",
-  "Tripadvisor Recognition 2024",
-  "Tripadvisor Recognition 2025",
-];
+  const restaurants = [
+    {
+      name: "Savana",
+      image: "/images/dining-saravana.JPG",
+      description:
+        "Savana is an all-day dining restaurant with ample choices or an a la carte selection to satisfy your cravings.",
+      hours: "7:00 AM to 11:30 PM",
+      slug: "savana", // used for routing
+    },
+    {
+      name: "Long Bar",
+      image: "/images/dining-longbar.jpg",
+      description:
+        "The Irish-style bar presents a vibrant ambience where you can enjoy good food, beverages and cheer.",
+      hours: "8:00 AM to 12:00 AM",
+      slug: "long-bar",
+    },
+    {
+      name: "Treats",
+      image: "/images/dining-treats.jpg",
+      description:
+        "We welcome everyone to indulge in a relaxed experience at our coffee shop – TREATS!",
+      hours: "8:00 AM to 8:00 PM",
+      slug: "treats",
+    },
+    {
+      name: "High Tea",
+      image: "/images/dining-hightea.jpg",
+      description:
+        "Sip a cup of artisan tea or coffee at the roof top garden while enjoying the fresh breeze or choose an ideal cozy spot at TREATS!",
+      hours: "3:00 PM to 7:00 PM",
+      slug: "high-tea",
+    },
+    {
+      name: "In Room Dining",
+      image: "/images/dining-inroom.jpg",
+      description:
+        "For a more intimate dining experience, you can simply request in-room dining, and our team will deliver your food right to your doorstep.",
+      hours: "24 Hours",
+      slug: "in-room-dining",
+    },
+    {
+      name: "Sky Lounge", 
+      image: "/images/dining-sky-lounge.PNG",
+      description:
+        "Enjoy panoramic city views and a sophisticated menu at our rooftop Sky Lounge, perfect for evening cocktails or casual dining.",
+      hours: "5:00 PM to 1:00 AM",
+      slug: "sky-lounge",
+    },
+  ];
 
-const DiningPage = () => {
-  const [currentImage, setCurrentImage] = useState(restaurants.map(() => 0));
+  const diningImages = [
+    { src: "/images/savana-tab.JPG", alt: "Savana" },
+    { src: "/images/long-bar-photo.JPG", alt: "Long Bar" },
+    { src: "/images/banner-treat-nw.JPG", alt: "Treats" },
+    { src: "/images/inroom-dining-banner-new.JPG", alt: "In Room Dining" },
+    { src: "/images/high-tea-banner.JPG", alt: "High Tea" },
+  ];
 
-  const nextImage = (index) => {
-    setCurrentImage((prev) =>
-      prev.map((imgIdx, i) =>
-        i === index ? (imgIdx + 1) % restaurants[i].images.length : imgIdx
-      )
-    );
-  };
+  // Custom Arrows
+const NextArrow = ({ onClick }) => (
+  <div
+    className="absolute top-1/2 -right-5 transform -translate-y-1/2 w-12 h-12 bg-white/80 rounded-full flex items-center justify-center shadow-lg cursor-pointer z-10 hover:bg-white transition"
+    onClick={onClick}
+  >
+    <FaChevronRight className="text-black text-xl" />
+  </div>
+);
 
-  const prevImage = (index) => {
-    setCurrentImage((prev) =>
-      prev.map((imgIdx, i) =>
-        i === index ? (imgIdx - 1 + restaurants[i].images.length) % restaurants[i].images.length : imgIdx
-      )
-    );
-  };
+const PrevArrow = ({ onClick }) => (
+  <div
+    className="absolute top-1/2 -left-5 transform -translate-y-1/2 w-12 h-12 bg-white/80 rounded-full flex items-center justify-center shadow-lg cursor-pointer z-10 hover:bg-white transition"
+    onClick={onClick}
+  >
+    <FaChevronLeft className="text-black text-xl" />
+  </div>
+);
 
-  return (
-    <div className="font-poppins bg-gray-50">
-
-      {/* Hero Section */}
-      <div
-        className="w-full h-[400px] md:h-[500px] bg-cover bg-center flex flex-col items-center justify-center text-white relative"
-        style={{ backgroundImage: "url('/images/dining-header.PNG')" }}
-      >
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60"></div>
-        <div className="relative z-10 text-center px-4">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg border-b-4 border-yellow-500 pb-2">
-            Dining
-          </h1>
-          <p className="mt-4 text-lg md:text-xl drop-shadow-md max-w-2xl mx-auto">
-            Indulge in sumptuous meals during your stay. The Golden Crown, Kandy serves a range of Asian cuisine as well as Western, bringing you the flavours from around the world.
-          </p>
-        </div>
-
-        <div className="absolute -bottom-16 w-full px-5">
-  <Booking />
-</div>
-      </div>
-
-      <div className="h-[100px]"></div> {/* Spacing for booking form */}
-
-      {/* Restaurants Section */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <h2 className="text-3xl font-semibold mb-10 text-center text-gray-800">
-          Our Restaurants
-        </h2>
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {restaurants.map((restaurant, idx) => (
-            <div key={idx} className="bg-white rounded-lg shadow-lg overflow-hidden relative group hover:shadow-2xl transition-shadow duration-300">
-              {/* Carousel */}
-              <img
-                src={restaurant.images[currentImage[idx]]}
-                alt={restaurant.name}
-                className="w-full h-60 object-cover transition duration-500 group-hover:scale-105"
-              />
-              <button
-                onClick={() => prevImage(idx)}
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60"
-              >
-                ‹
-              </button>
-              <button
-                onClick={() => nextImage(idx)}
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60"
-              >
-                ›
-              </button>
-
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">{restaurant.name}</h3>
-                <p className="text-gray-600">{restaurant.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Awards Section */}
-      <div className="bg-gray-100 py-12">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-semibold mb-6 text-gray-800">Awards & Recognition</h2>
-          <ul className="space-y-2 text-gray-600">
-            {awards.map((award, idx) => (
-              <li key={idx} className="flex items-center justify-center gap-2">
-                <span className="text-yellow-500">★</span>
-                {award}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      {/* CTA Section */}
-      <div className="max-w-7xl mx-auto px-6 py-16 text-center">
-        <h2 className="text-3xl font-semibold mb-4 text-gray-800">Reserve Your Table</h2>
-        <p className="text-gray-600 mb-6">Experience fine dining at The Golden Crown. Book your table today.</p>
-        <button className="bg-yellow-500 text-black font-semibold py-3 px-8 rounded hover:bg-yellow-600 transition">
-          Book Now
-        </button>
-      </div>
-    </div>
-  );
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: true,
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
+  adaptiveHeight: true,
 };
 
-export default DiningPage;
+  return (
+    <div className="font-poppins bg-white text-[#222]">
+      {/* ---------------------------- HERO HEADER ---------------------------- */}
+      <div
+        className="w-full h-[400px] md:h-[560px] bg-cover bg-center relative flex items-center justify-center text-white"
+        style={{ backgroundImage: "url('/images/dining-header.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-black/10"></div>
+
+        <div
+          className={`
+  absolute bottom-10 right-10 w-[440px] 
+  bg-black/80 text-white p-6 
+  backdrop-blur-sm shadow-lg
+  border-none
+  flex items-center justify-end
+  transition-all duration-700 ease-out
+  ${showText ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
+`}
+        >
+          {/* Text */}
+          <h2 className="text-2xl leading-snug text-right mr-4">
+            Beyond The <br />
+            Boundaries Of Taste...
+          </h2>
+
+          {/* Vertical Line */}
+          <div className="w-[2px] bg-white h-12"></div>
+        </div>
+      </div>
+
+      {/* ---------------------------- BOOKING FORM ---------------------------- */}
+      <Booking />
+      {/* ---------------------- DINING TITLE & DESCRIPTION ---------------------- */}
+      <div className="w-full text-center mt-10 px-4">
+        {" "}
+        {/* reduced top margin */}
+        <h2 className="text-3xl font-semibold tracking-wide">Dining</h2>
+        <p className="text-gray-700 mt-6 leading-relaxed max-w-3xl mx-auto text-[15px]">
+          Indulge in sumptuous meals during your stay. The Golden Crown, Kandy
+          serves a range of Asian cuisine as well as Western, bringing you the
+          flavours from around the world.
+        </p>
+      </div>
+
+      <section className="relative w-full h-[500px] overflow-hidden mt-10">
+        {" "}
+        {/* reduced height and added margin-top */}
+        {/* Section Image */}
+        <img
+          src="/images/dining-section.JPG"
+          className="absolute inset-0 w-full h-full object-cover"
+          alt=""
+        />
+        {/* Text Box */}
+        <div
+          className="absolute top-1/2 left-16 -translate-y-1/2 
+  bg-white/80 backdrop-blur-sm p-10 max-w-[480px] text-black h-[250px]"
+        >
+          <h1 className="text-4xl font-light mb-6">DINING</h1>
+
+          <p className="text-base leading-relaxed mt-2 mb-4 text-black text-justify">
+            Indulge in sumptuous meals during your stay. The Golden Crown, Kandy
+            serves a range of Asian cuisine as well as Western, bringing you the
+            flavours from around the world.
+          </p>
+        </div>
+      </section>
+
+{/* Our Restaurants */}
+<div className="text-center my-12">
+  <h2 className="text-3xl font-semibold mb-8">Our Restaurants</h2>
+
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    {restaurants.map((restaurant) => (
+      <div key={restaurant.name} className="relative group overflow-hidden rounded-lg shadow-lg h-[450px]">
+        <img
+          src={restaurant.image}
+          alt={restaurant.name}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+
+        {/* Always visible name at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 bg-white/80 text-black text-center py-4 font-semibold text-lg z-10">
+          {restaurant.name}
+        </div>
+
+        {/* Overlay on hover */}
+        <div
+          className="absolute inset-0 flex flex-col justify-end p-6
+                     bg-white/80 backdrop-blur-sm 
+                     translate-y-full group-hover:translate-y-0 
+                     transition-transform duration-500 ease-in-out z-20"
+        >
+          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-150 flex flex-col items-center text-center space-y-4">
+            <h3 className="text-black text-2xl font-semibold">{restaurant.name}</h3>
+            <p className="text-black">{restaurant.description}</p>
+            <p className="text-black font-medium">Opening Hours: {restaurant.hours}</p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link
+                to={`/restaurants/${restaurant.slug}`}
+                className="px-4 py-2 border border-black text-black rounded hover:bg-black hover:text-white transition"
+              >
+                Find Out More
+              </Link>
+              <Link
+                to={`/reservation/${restaurant.slug}`}
+                className="px-4 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-500 transition"
+              >
+                Make A Reservation
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+{/* ---------------------- Dining Gallery Slider ---------------------- */}
+<div className="dining-gallery my-16 w-full">
+      <Slider {...settings}>
+        {diningImages.map((img, index) => (
+          <div key={index} className="w-full">
+            <img
+              src={img.src}
+              alt={img.alt}
+              className="w-full h-[600px] object-cover"
+            />
+          </div>
+        ))}
+      </Slider>
+    </div>
+   
+    </div>
+  );
+}
