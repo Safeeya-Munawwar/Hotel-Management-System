@@ -18,7 +18,7 @@ export default function Footer() {
 
         {/* Navigation */}
         <div className="flex flex-col items-center md:items-start">
-          <h4 className="text-white font-semibold mb-4">The Golden Crown, Kandy</h4>
+          <h4 className="text-white font-semibold mb-4">Net Lanka Hotel, Kandy</h4>
           <ul className="space-y-2 text-gray-400 text-sm text-center md:text-left">
             <li className="hover:text-white cursor-pointer">Rooms & Suites</li>
             <li className="hover:text-white cursor-pointer">Offers</li>
@@ -107,7 +107,7 @@ export default function Footer() {
 
       {/* Footer Bottom */}
       <div className="max-w-[1400px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs space-y-2 md:space-y-0">
-        <p>© 2025 The Golden Crown. All rights reserved.</p>
+        <p>© 2025 Net Lanka Hotel. All rights reserved.</p>
         <p>Website Design, Development & Hosting by NetIT Technology</p>
       </div>
     </footer>

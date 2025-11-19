@@ -18,11 +18,11 @@ export default function HeroBanner() {
         bg-black/50 backdrop-blur-sm p-10 max-w-[480px] text-white"
       >
         <h1 className="text-4xl font-light mb-4">
-          THE GOLDEN<br />CROWN, KANDY
+          THE NET<br />LANKA, KANDY
         </h1>
 
         <p className="text-sm leading-relaxed mb-4 text-gray-200">
-          The Golden Crown, Kandy offers you the opportunity to experience the
+          The Net Lanka Hotel, Kandy offers you the opportunity to experience the
           quintessence of Sri Lankan hospitality...
         </p>
 

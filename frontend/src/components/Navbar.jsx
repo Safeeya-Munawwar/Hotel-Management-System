@@ -63,7 +63,7 @@ export default function Navbar() {
           {/* LEFT — LOGO */}
           <div
             className={`transition-all duration-500 ${
-              scrolled ? "w-28 py-2" : "w-36 py-4"
+              scrolled ? "w-20 py-2" : "w-36 py-4"
             }`}
           >
             <img src="/logo.png" alt="Logo" className="w-full" />
