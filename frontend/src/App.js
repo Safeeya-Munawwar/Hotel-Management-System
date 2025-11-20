@@ -7,6 +7,8 @@ import Contact from "./pages/Contact";
 import DiningPage from "./pages/Dining";
 import RestaurantDetails from "./pages/restaurants/RestaurantDetails";
 import ReservationPage from "./pages/reservation/ReservationPage";
+import Wedding from "./pages/Wedding";
+import WeddingReservation from "./pages/reservation/WeddingReservation";
 
 import HotelDetail from "./pages/HotelDetail";
 import Booking from "./pages/Booking";
@@ -23,6 +25,10 @@ function App() {
           <Route path="/dining" element={<DiningPage />} />
           <Route path="/restaurants/:slug" element={<RestaurantDetails />} />
         <Route path="/reservation/:slug" element={<ReservationPage />} />
+        <Route path="/weddings" element={<Wedding />} />
+        <Route path="/wedding-reservation" element={<WeddingReservation />} />
+        <Route path="/wedding-reservation/:slug" element={<WeddingReservation />} />
+
           <Route path="/hotel-detail" element={<HotelDetail />} />
           <Route path="/booking" element={<Booking />} />
           <Route path="/menu" element={<Menu />} />
