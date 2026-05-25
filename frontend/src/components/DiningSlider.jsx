@@ -11,7 +11,7 @@ import "swiper/css/navigation";
 const restaurants = [
   {
     name: "Savana",
-    image: "/images/dining-saravana.JPG",
+    image: "/images/dining-saravana.jpg",
     description:
       "Savana is an all-day dining restaurant with ample choices or an a la carte selection to satisfy your cravings.",
     hours: "7:00 AM to 11:30 PM",
@@ -51,7 +51,7 @@ const restaurants = [
   },
   {
     name: "Sky Lounge",
-    image: "/images/sky-lounge-header.JPG",
+    image: "/images/sky-lounge-header.jpg",
     description:
       "Enjoy panoramic city views and a sophisticated menu at our rooftop Sky Lounge.",
     hours: "5:00 PM to 1:00 AM",

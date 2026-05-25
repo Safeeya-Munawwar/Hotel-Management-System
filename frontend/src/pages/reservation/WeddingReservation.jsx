@@ -12,15 +12,15 @@ export default function WeddingReservation() {
   const weddingData = useMemo(() => ({
     grand: {
       name: "Grand Ballroom",
-      headerImage: "/images/grand-ballroom.JPG",
+      headerImage: "/images/grand-ballroom.jpg",
       tagline: "Reservation...",
-      image: "/images/grand-ballroom.JPG",
+      image: "/images/grand-ballroom.jpg",
     },
     crown: {
       name: "Crown Court",
-      headerImage: "/images/crown-court.PNG",
+      headerImage: "/images/crown-court.png",
       tagline: "Reservation...",
-      image: "/images/crown-court.PNG",
+      image: "/images/crown-court.png",
     },
     windsor: {
       name: "Windsor Ballroom",
@@ -30,9 +30,9 @@ export default function WeddingReservation() {
     },
     lavo: {
       name: "LAVO",
-      headerImage: "/images/lavo.PNG",
+      headerImage: "/images/lavo.png",
       tagline: "Reservation...",
-      image: "/images/lavo.PNG",
+      image: "/images/lavo.png",
     },
   }), []);
 

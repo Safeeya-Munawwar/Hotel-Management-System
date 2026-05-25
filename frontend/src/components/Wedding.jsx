@@ -87,7 +87,7 @@ export default function WeddingSection() {
         </div>
 
         <div className="flex justify-between items-center">
-          <Link to="#" className="underline text-sm font-medium">
+          <Link to="/weddings" className="underline text-sm font-medium">
             Read More
           </Link>
           <button className="bg-yellow-500 text-white px-5 py-2 text-sm font-semibold rounded">

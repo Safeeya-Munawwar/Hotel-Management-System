@@ -8,7 +8,7 @@ export default function Footer() {
 
         {/* Logo & Awards */}
         <div className="flex flex-col items-center space-y-4">
-          <img src="/logo.PNG" alt="The Golden Crown Logo" className="w-32" />
+          <img src="/logo.png" alt="The Golden Crown Logo" className="w-32" />
           <div className="flex flex-wrap justify-center gap-4">
             <img src="/images/award1.png" alt="Award 1" className="w-12 h-12 object-contain" />
             <img src="/images/award2.png" alt="Award 2" className="w-12 h-12 object-contain" />

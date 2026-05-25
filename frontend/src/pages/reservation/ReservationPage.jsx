@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Booking from "../../components/Booking"; // path adjust if needed
+import Booking from "../../components/Booking"; 
 
 export default function ReservationPage() {
   const { slug } = useParams();
@@ -14,13 +14,13 @@ export default function ReservationPage() {
   const restaurantData = {
     savana: {
       name: "Savana",
-      headerImage: "/images/savana-tab.JPG",
+      headerImage: "/images/savana-tab.jpg",
       tagline: "The Golden Hospitality",
-      image: "/images/dining2.PNG",
+      image: "/images/dining2.png",
     },
     "long-bar": {
       name: "Long Bar",
-      headerImage: "/images/longbar-header.PNG",
+      headerImage: "/images/longbar-header.png",
       tagline: "Where Good Times Begin",
       image: "/images/reservation.jpg",
     },
@@ -28,13 +28,13 @@ export default function ReservationPage() {
       name: "Treats",
       headerImage: "/images/banner-treat-nw.jpg",
       tagline: "Fresh. Delightful. Relaxed",
-      image: "/images/dining3.PNG",
+      image: "/images/dining3.png",
     },
     "high-tea": {
       name: "High Tea",
       headerImage: "/images/high-tea-banner.jpg",
       tagline: "Elegant Evenings, Elevated Taste",
-      image: "/images/dining3-3.PNG",
+      image: "/images/dining3-3.png",
     },
     "in-room-dining": {
       name: "In Room Dining",
@@ -44,9 +44,9 @@ export default function ReservationPage() {
     },
     "sky-lounge": {
       name: "Sky Lounge",
-      headerImage: "/images/sky-lounge-header.JPG",
+      headerImage: "/images/sky-lounge-header.jpg",
       tagline: "Dine Above the City",
-      image: "/images/sky-lounge-center.JPG",
+      image: "/images/sky-lounge-center.jpg",
     },
   };
 

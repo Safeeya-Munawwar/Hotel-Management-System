@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Booking from "../../components/Booking"; // path adjust if needed
+import Booking from "../../components/Booking"; 
 
 import { Link } from "react-router-dom";
 
@@ -15,17 +15,17 @@ export default function RestaurantDetails() {
   const restaurantData = {
     savana: {
       name: "Savana",
-      headerImage: "/images/savana-tab.JPG",
+      headerImage: "/images/savana-tab.jpg",
       tagline: "The Golden Hospitality",
       overview:
         "Savana is an all-day dining restaurant with ample choices or an a la carte selection to satisfy your cravings. Whether it’s dinner by starlight, a hurried lunch or a leisurely breakfast, our main restaurant elevates every dining experience.",
-      centerImage: "/images/savana-center.JPG",
+      centerImage: "/images/savana-center.jpg",
       openingHours: "7:00 AM to 11:30 PM",
       status: "Open",
       cuisine: "International Cuisines",
       dressCode: "Smart Casual",
       contact: "+94 812 244 000",
-      featureImage: "/images/savana-features.JPG",
+      featureImage: "/images/savana-features.jpg",
       features: [
         "All Day Dining",
         "International Buffet and À La Carte",
@@ -36,17 +36,17 @@ export default function RestaurantDetails() {
 
     "long-bar": {
       name: "Long Bar",
-      headerImage: "/images/longbar-header.PNG",
+      headerImage: "/images/longbar-header.png",
       tagline: "Where Good Times Begin",
       overview:
         "The Irish-style bar presents a vibrant ambience where you can enjoy good food, beverages, and cheer. With lively music, signature cocktails, and a warm atmosphere, Long Bar is ideal for unwinding.",
-      centerImage: "/images/longbar-center.JPG",
+      centerImage: "/images/longbar-center.jpg",
       openingHours: "8:00 AM to 12:00 AM",
       status: "Open",
       cuisine: "Bar Snacks & Beverages",
       dressCode: "Casual",
       contact: "+94 812 244 111",
-      featureImage: "/images/long-bar-photo.JPG",
+      featureImage: "/images/long-bar-photo.jpg",
       features: [
         "Irish-Style Bar",
         "Cocktails & Mixology",
@@ -61,13 +61,13 @@ export default function RestaurantDetails() {
       tagline: "Fresh. Delightful. Relaxed",
       overview:
         "We welcome everyone to indulge in a relaxed experience at TREATS! Enjoy freshly brewed coffee, artisanal pastries, and a selection of sweet and savory delights.",
-      centerImage: "/images/treats-center.JPG",
+      centerImage: "/images/treats-center.jpg",
       openingHours: "8:00 AM to 8:00 PM",
       status: "Open",
       cuisine: "Bakery & Coffee Shop",
       dressCode: "Casual",
       contact: "+94 812 244 222",
-      featureImage: "/images/treats-feature.JPG",
+      featureImage: "/images/treats-feature.jpg",
       features: [
         "Coffee & Pastry Bar",
         "Relaxed Ambience",
@@ -82,13 +82,13 @@ export default function RestaurantDetails() {
       tagline: "Elegant Evenings, Elevated Taste",
       overview:
         "Sip a cup of artisan tea or coffee at the rooftop garden while enjoying the fresh breeze or choose an ideal cozy spot indoors. Perfect for an elegant and relaxed evening.",
-      centerImage: "/images/hightea-center.JPG",
+      centerImage: "/images/hightea-center.jpg",
       openingHours: "3:00 PM to 7:00 PM",
       status: "Open",
       cuisine: "Tea, Coffee & Snacks",
       dressCode: "Smart Casual",
       contact: "+94 812 244 333",
-      featureImage: "/images/hightea-feature.JPG",
+      featureImage: "/images/hightea-feature.jpg",
       features: [
         "Rooftop Garden",
         "Scenic Views",
@@ -103,13 +103,13 @@ export default function RestaurantDetails() {
       tagline: "Dining at Your Doorstep",
       overview:
         "For a more intimate dining experience, simply request in-room dining. Our team will deliver your favorite dishes directly to your room, any time of the day.",
-      centerImage: "/images/inroom-center.JPG",
+      centerImage: "/images/inroom-center.jpg",
       openingHours: "24 Hours",
       status: "Open",
       cuisine: "International & Local Menu",
       dressCode: "Casual",
       contact: "+94 812 244 444",
-      featureImage: "/images/inroom-feature.JPG",
+      featureImage: "/images/inroom-feature.jpg",
       features: [
         "24/7 Service",
         "Private Dining",
@@ -120,17 +120,17 @@ export default function RestaurantDetails() {
 
     "sky-lounge": {
       name: "Sky Lounge",
-      headerImage: "/images/sky-lounge-header.JPG",
+      headerImage: "/images/sky-lounge-header.jpg",
       tagline: "Dine Above the City",
       overview:
         "Enjoy panoramic city views and a sophisticated menu at our rooftop Sky Lounge — perfect for evening cocktails, romantic dinners, or relaxed gatherings.",
-      centerImage: "/images/sky-lounge-center.JPG",
+      centerImage: "/images/sky-lounge-center.jpg",
       openingHours: "5:00 PM to 1:00 AM",
       status: "Open",
       cuisine: "Cocktails & Fusion Dining",
       dressCode: "Smart Casual",
       contact: "+94 812 244 555",
-      featureImage: "/images/sky-lounge-feature.JPG",
+      featureImage: "/images/sky-lounge-feature.jpg",
       features: [
         "Rooftop City Views",
         "Signature Cocktails",
@@ -143,7 +143,7 @@ export default function RestaurantDetails() {
   const restaurants = [
     {
       name: "Savana",
-      image: "/images/dining-saravana.JPG",
+      image: "/images/dining-saravana.jpg",
       description:
         "Savana is an all-day dining restaurant with ample choices or an a la carte selection to satisfy your cravings.",
       hours: "7:00 AM to 11:30 PM",
@@ -183,7 +183,7 @@ export default function RestaurantDetails() {
     },
     {
       name: "Sky Lounge",
-      image: "/images/sky-lounge-header.JPG",
+      image: "/images/sky-lounge-header.jpg",
       description:
         "Enjoy panoramic city views and a sophisticated menu at our rooftop Sky Lounge, perfect for evening cocktails or casual dining.",
       hours: "5:00 PM to 1:00 AM",

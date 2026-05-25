@@ -1,4 +1,3 @@
-// NavbarWeather.jsx
 import React, { useState, useEffect } from "react";
 
 export default function WeatherWidget({ city = "Kandy,SL" }) {
@@ -11,7 +10,7 @@ export default function WeatherWidget({ city = "Kandy,SL" }) {
       setLoading(true);
       setError(null);
 
-      const API_KEY = "eeaa2d6d72cb678891e870945caab69f"; // Your key here
+      const API_KEY = "eeaa2d6d72cb678891e870945caab69f"; 
 
       try {
         const res = await fetch(

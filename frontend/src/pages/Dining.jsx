@@ -17,7 +17,7 @@ export default function DiningPage() {
   const restaurants = [
     {
       name: "Savana",
-      image: "/images/dining-saravana.JPG",
+      image: "/images/dining-saravana.jpg",
       description:
         "Savana is an all-day dining restaurant with ample choices or an a la carte selection to satisfy your cravings.",
       hours: "7:00 AM to 11:30 PM",
@@ -57,7 +57,7 @@ export default function DiningPage() {
     },
     {
       name: "Sky Lounge",
-      image: "/images/sky-lounge-header.JPG",
+      image: "/images/sky-lounge-header.jpg",
       description:
         "Enjoy panoramic city views and a sophisticated menu at our rooftop Sky Lounge, perfect for evening cocktails or casual dining.",
       hours: "5:00 PM to 1:00 AM",
@@ -66,11 +66,11 @@ export default function DiningPage() {
   ];
 
   const diningImages = [
-    { src: "/images/savana-tab.JPG", alt: "Savana" },
-    { src: "/images/long-bar-photo.JPG", alt: "Long Bar" },
-    { src: "/images/banner-treat-nw.JPG", alt: "Treats" },
-    { src: "/images/inroom-dining-banner-new.JPG", alt: "In Room Dining" },
-    { src: "/images/high-tea-banner.JPG", alt: "High Tea" },
+    { src: "/images/savana-tab.jpg", alt: "Savana" },
+    { src: "/images/long-bar-photo.jpg", alt: "Long Bar" },
+    { src: "/images/banner-treat-nw.jpg", alt: "Treats" },
+    { src: "/images/inroom-dining-banner-new.jpg", alt: "In Room Dining" },
+    { src: "/images/high-tea-banner.jpg", alt: "High Tea" },
   ];
 
   // Custom Arrows
@@ -169,7 +169,7 @@ export default function DiningPage() {
         {" "}
         {/* Section Image */}
         <img
-          src="/images/dining-section.JPG"
+          src="/images/dining-section.jpg"
           className="absolute inset-0 w-full h-full object-cover"
           alt=""
         />
